@@ -2,10 +2,12 @@ import axios from 'axios';
 
 export function getProducts({ commit }) {
 	let url =
-		'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
+		// 'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
+		"https://fakestoreapi.com/products?limit=5";
 	axios
 		.get(url)
 		.then((response) => {
+			console.log(response.data);
 			commit('setProducts', response.data);
 		})
 		.catch((error) => {
