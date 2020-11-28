@@ -7,7 +7,6 @@ export function getProducts({ commit }) {
 	axios
 		.get(url)
 		.then((response) => {
-			console.log(response.data);
 			commit('setProducts', response.data);
 		})
 		.catch((error) => {
@@ -22,7 +21,6 @@ export async function productDetails({ commit }, id) {
 	await axios
 		.get(url, { params: { id: id } })
 		.then((response) => {
-			console.log(response.data)
 			commit('setProduct', response.data);
 		})
 		.catch(function(error) {

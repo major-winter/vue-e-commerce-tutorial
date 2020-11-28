@@ -1,18 +1,16 @@
-//cs-ecommerce/src/views/home/Details.vue
 <template>
 	<div class="container-fluid">
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center" v-if="isLoaded">
 			<div class="col-6">
 				<div class="card text-left shadow-md">
 					<img class="card-img-top" :src="product.image" alt />
 				</div>
 			</div>
 			<div class="col-6 text-left text-justify">
-				<div class="display-3">{{ product.name }}</div>
-				<p class="lead text-justify">{{ product.content }}</p>
+				<div class="display-3">{{ product.category }}</div>
+				<p class="lead text-justify">{{ product.title }}</p>
 				<div>
-					<p class="h3">Price</p>
-					<p class="h2">${{ product.price }}</p>
+					<p class="h3">Price: ${{ product.price }}</p>
 				</div>
 				<AddToCart :product="product" v-if="user.cu" />
 			</div>
@@ -26,6 +24,7 @@
 		data() {
 			return {
 				isInCardProp: false,
+				isLoaded: false,
 			};
 		},
 		computed: {
@@ -36,14 +35,12 @@
 		methods: {
 			...mapActions('product', ['productDetails']),
 		},
-		watch: {
-			product(newVal) {
-				if (!newVal) this.product = null;
-				console.log(newVal);
-			},
-		},
-		mounted() {
-			this.productDetails(this.$route.params.idProduct);
+
+		created() {
+			let vm = this;
+			this.productDetails(this.$route.params.idProduct).then(() => {
+				vm.isLoaded = true;
+			});
 		},
 	};
 </script>

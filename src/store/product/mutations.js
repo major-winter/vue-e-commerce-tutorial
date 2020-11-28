@@ -1,5 +1,6 @@
 export function setProducts(state, val) {
 	state.products = val;
+	localStorage.setItem('products', JSON.stringify(val));
 }
 export function setProduct(state, val) {
 	state.product = val;

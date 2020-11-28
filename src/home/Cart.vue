@@ -1,4 +1,3 @@
-//cs-ecommerce/src/views/home/Cart.vue
 <template>
 	<div class="container" style="padding: 30px">
 		<div class="row d-flex justify-content-center">
@@ -9,7 +8,7 @@
 					href="#"
 					class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
 				>
-					<img :src="item.imageUrl" alt height="60" width="60" />
+					<img :src="item.image" alt height="60" width="60" />
 					<p class="h4">{{ item.name }}</p>
 					<div class="row">
 						<div class="mr-2">
@@ -42,6 +41,13 @@
 				>
 					Checkout
 				</button>
+				<button
+					@click="toMainPage"
+					type="button"
+					class="btn btn-primary btn-lg btn-block mt-4"
+				>
+					Continue Shopping
+				</button>
 			</div>
 		</div>
 	</div>
@@ -73,6 +79,10 @@
 					alert('Purchase successful!');
 					vm.$router.push('/');
 				}, 2000);
+			},
+
+			toMainPage() {
+				this.$router.push('/');
 			},
 		},
 		mounted() {
