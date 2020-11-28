@@ -3,7 +3,7 @@ import axios from 'axios';
 export function getProducts({ commit }) {
 	let url =
 		// 'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
-		"https://fakestoreapi.com/products?limit=5";
+		'https://fakestoreapi.com/products?limit=6';
 	axios
 		.get(url)
 		.then((response) => {
@@ -15,13 +15,15 @@ export function getProducts({ commit }) {
 		});
 }
 
-export function productDetails({ commit }, id) {
+export async function productDetails({ commit }, id) {
 	let url =
-		'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
-	axios
+		// 'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
+		`https://fakestoreapi.com/products/${id}`;
+	await axios
 		.get(url, { params: { id: id } })
 		.then((response) => {
-			commit('setProduct', response.data[0]);
+			console.log(response.data)
+			commit('setProduct', response.data);
 		})
 		.catch(function(error) {
 			console.log(error);

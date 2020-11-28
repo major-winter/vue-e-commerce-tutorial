@@ -2,10 +2,10 @@
 	<div id="app">
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-				<router-link class="navbar-brand" to="/">CS-eCommerce</router-link>
+				<router-link class="navbar-brand" to="/">Vue-Shop</router-link>
 				<div class="ml-auto">
-					<div v-if="user.photoURL">
-						<img :src="user.photoURL" class="img-thumbnail profile-image" alt />
+					<div v-if="user.Ad">
+						<img :src="user.SJ" class="img-thumbnail profile-image" alt />
 						<router-link class="btn btn-primary my-2 my-sm-0" to="/cart">
 							<img
 								src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG38.png"
@@ -56,7 +56,7 @@
 	.page-container {
 		padding-top: 81px;
 	}
-	.btn {
+	/* .btn {
 		border-radius: 0%;
 		font-weight: bold;
 		background: teal;
@@ -70,5 +70,5 @@
 	}
 	.btn:focus {
 		background: teal;
-	}
+	} */
 </style>

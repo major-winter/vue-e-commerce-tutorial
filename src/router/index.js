@@ -10,7 +10,8 @@ const routes = [
 		children: [
 			{ path: '', component: () => import('../home/Products.vue') },
 			{
-				path: 'details/:idProduct',
+				path: 'product/:idProduct',
+				name: 'ProductDetail',
 				component: () => import('../home/Details.vue'),
 			},
 			{ path: 'cart', component: () => import('../home/Cart.vue') },

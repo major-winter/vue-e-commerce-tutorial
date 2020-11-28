@@ -1,4 +1,3 @@
-//cs-ecommerce/src/views/account/Login.vue
 <template>
 	<div>
 		<div class="container" style="padding-top: 10%">
@@ -43,11 +42,18 @@
 							>
 						</div>
 						<button
-							@click="login()"
+							@click="googleLogin"
 							type="submit"
 							class="btn btn-primary btn-block"
 						>
 							Login
+						</button>
+						<button
+							@click="cancel"
+							type="submit"
+							class="btn btn-secondary btn-block"
+						>
+							Cancel
 						</button>
 					</div>
 				</div>
@@ -61,11 +67,20 @@
 		name: 'Login',
 		methods: {
 			...mapActions('account', ['login']),
+			cancel() {
+				this.$router.go(-1);
+			},
+			async googleLogin() {
+				const googleUser = await this.$gAuth.signIn();
+				// const info = await googleUser.getAuthResponse();
+				const profile = await googleUser.getBasicProfile();
+				console.log(profile);
+				this.login(profile);
+			},
 		},
 	};
 </script>
 
-//cs-ecommerce/src/views/account/login.vue
 <style>
 	.form-control {
 		border-radius: 0%;
@@ -78,13 +93,5 @@
 	.btn {
 		border-radius: 0%;
 		font-weight: bold;
-		background: teal;
-		border: teal;
-	}
-	.btn:hover {
-		background: #00b4b4;
-	}
-	.btn:focus {
-		background: teal;
 	}
 </style>
