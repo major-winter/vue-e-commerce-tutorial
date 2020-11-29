@@ -1,5 +1,7 @@
 export default function() {
 	return {
-		userData: (JSON.parse(localStorage.getItem('userData'))),
+		userData: localStorage.getItem('userData')
+			? JSON.parse(localStorage.getItem('userData'))
+			: {},
 	};
 }
