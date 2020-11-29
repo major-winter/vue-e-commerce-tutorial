@@ -21,11 +21,15 @@
 		props: ['product'],
 	};
 </script>
-<style>
+
+<style scoped>
 	.card .product-image {
 		height: 400px;
-		zoom: 0.8;
+		/* width: 200px; */
+		/* zoom: 0.8;	 */
+		transform: scale(0.7);
 	}
+
 	.text-display {
 		overflow: hidden;
 		text-overflow: ellipsis;

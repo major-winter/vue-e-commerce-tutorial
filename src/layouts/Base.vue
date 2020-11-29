@@ -1,10 +1,10 @@
 <template>
-	<div id="app">
+	<div>
 		<div>
-			<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+			<nav class="navbar navbar-expand-lg navbar-dark">
 				<router-link class="navbar-brand" to="/">Vue-Shop</router-link>
 				<div class="ml-auto">
-					<div v-if="user.Ad">
+					<div v-if="Object.keys(this.user).length > 0">
 						<img :src="user.SJ" class="img-thumbnail profile-image" alt />
 						<router-link class="btn btn-primary my-2 my-sm-0" to="/cart">
 							<img
@@ -16,32 +16,85 @@
 								cart.length
 							}}</span>
 						</router-link>
+						<button class="btn btn-primary" type="button" @click="logOut">
+							LogOut
+						</button>
 					</div>
-					<router-link v-else class="btn btn-primary my-2 my-sm-0" to="/login"
-						>Login</router-link
+
+					<!-- <router-link v-else class="btn btn-primary my-2 my-sm-0" to="/login"
+						>Login <i class="fab fa-google"></i
+					></router-link> -->
+					<button
+						v-else
+						class="btn btn-primary my-2 my-sm-0"
+						@click="googleLogin"
 					>
+						Login <i class="fab fa-google"></i>
+					</button>
 				</div>
 			</nav>
 		</div>
 		<div class="page-container">
 			<router-view />
 		</div>
+		<div class="fill-space"></div>
+		<footer>
+			<div class="row">
+				<div class="col">
+					<h5>Get to Know Us</h5>
+					<ul>
+						<li>About Us</li>
+						<li>Careers</li>
+						<li>Investor Relations</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h5>Make Money with Us</h5>
+					<ul>
+						<li>Sell your products</li>
+						<li>Sell your apps</li>
+						<li>Become an Affiliate</li>
+						<li>Advertise your products</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<p>
+					Copyright 2020
+				</p>
+			</div>
+		</footer>
 	</div>
 </template>
 
 <script>
-	import { mapGetters } from 'vuex';
+	import { mapGetters, mapActions } from 'vuex';
 	export default {
 		name: 'Base',
 		computed: {
 			...mapGetters('account', ['user']),
 			...mapGetters('product', ['cart']),
 		},
+
+		methods: {
+			...mapActions('account', ['logout', 'login']),
+			async googleLogin() {
+				const googleUser = await this.$gAuth.signIn();
+				// const info = await googleUser.getAuthResponse();
+				const profile = await googleUser.getBasicProfile();
+				this.login(profile);
+			},
+			async logOut() {
+				const response = await this.$gAuth.signOut();
+				this.logout(response);
+			},
+		},
 	};
 </script>
 
 <style>
-	nav {
+	nav,
+	footer {
 		background-color: teal;
 	}
 	.navbar-brand {
@@ -56,19 +109,20 @@
 	.page-container {
 		padding-top: 81px;
 	}
-	/* .btn {
-		border-radius: 0%;
-		font-weight: bold;
-		background: teal;
-		border: teal;
+	.col ul {
+		list-style: none;
+		padding: 0;
 	}
-	.btn:hover {
-		background: #00b4b4;
+
+	footer {
+		position: relative;
+		bottom: -460px;
+		overflow: hidden;
+		padding: 10px;
+		font-size: 0.8rem;
 	}
-	input {
-		border-radius: 0%;
-	}
-	.btn:focus {
-		background: teal;
+
+	/* .fill-space {
+		height: calc(100vh - 587px);
 	} */
 </style>

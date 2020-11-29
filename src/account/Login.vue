@@ -74,7 +74,6 @@
 				const googleUser = await this.$gAuth.signIn();
 				// const info = await googleUser.getAuthResponse();
 				const profile = await googleUser.getBasicProfile();
-				console.log(profile);
 				this.login(profile);
 			},
 		},

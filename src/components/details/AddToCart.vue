@@ -1,12 +1,11 @@
-//cs-ecommerce/src/components/details/AddToCart.html
 <template>
-	<div class="row">
+	<div class="row row-custom">
 		<div class="col-3">
 			<label class="sr-only" for="inlineFormInputName2">Quantity</label>
 			<input
 				type="number"
 				v-model="quantity"
-				class="form-control mb-2 mr-sm-2"
+				class="form-control mb-2 mr-sm-2 form-control-custom"
 			/>
 		</div>
 		<button
@@ -67,5 +66,11 @@
 		},
 	};
 </script>
-<style></style>
-  
+<style scoped>
+	.row-custom {
+		align-items: baseline;
+	}
+	.form-control-custom {
+		height: auto;
+	}
+</style>

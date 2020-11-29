@@ -1,12 +1,14 @@
 import axios from 'axios';
+let limit = 6;
 
-export function getProducts({ commit }) {
-	let url =
-		// 'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
-		'https://fakestoreapi.com/products?limit=6';
+export function getProducts({ commit }, payload) {
+	if (payload) limit += payload;
+	let url = `https://fakestoreapi.com/products?limit=${limit}`;
+
 	axios
 		.get(url)
 		.then((response) => {
+			console.log(response.data);
 			commit('setProducts', response.data);
 		})
 		.catch((error) => {
@@ -15,11 +17,10 @@ export function getProducts({ commit }) {
 }
 
 export async function productDetails({ commit }, id) {
-	let url =
-		// 'https://my-json-server.typicode.com/Nelzio/ecommerce-fake-json/products';
-		`https://fakestoreapi.com/products/${id}`;
+	let url = `https://fakestoreapi.com/products/${id}`;
+
 	await axios
-		.get(url, { params: { id: id } })
+		.get(url)
 		.then((response) => {
 			commit('setProduct', response.data);
 		})

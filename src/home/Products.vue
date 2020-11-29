@@ -2,7 +2,7 @@
 	<div style="padding: 25px;">
 		<div class="container">
 			<div class="input-group mb-3">
-				<div class="input-group-prepend">
+				<div class="input-group-prepend float-right">
 					<button
 						class="btn btn-outline-secondary"
 						type="button"
@@ -18,6 +18,7 @@
 					aria-label=""
 					aria-describedby="basic-addon1"
 					v-model.trim="searchedItem"
+					v-on:keyup.enter="findProduct"
 				/>
 			</div>
 			<div class="row" v-if="searchProducts.length === 0">
@@ -34,6 +35,11 @@
 					<ProductCard :product="product" />
 				</div>
 			</div>
+			<div>
+				<button class="btn btn-info btn-lg" @click="loadMore" v-if="canLoad">
+					Load more
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -45,14 +51,24 @@
 			return {
 				searchProducts: [],
 				searchedItem: '',
+				canLoad: true,
 			};
 		},
 		computed: {
 			...mapGetters('product', ['products']),
 		},
+		watch: {
+			searchedItem(newVal) {
+				let vm = this;
+				newVal.trim() === '' || newVal == null
+					? vm.findProduct()
+					: vm.findProduct(newVal);
+			},
+		},
 		components: { ProductCard },
 		methods: {
 			...mapActions('product', ['getProducts', 'addCart', 'removeCart']),
+
 			findProduct() {
 				let vm = this;
 				vm.searchProducts = [];
@@ -65,6 +81,12 @@
 						vm.searchProducts.push(product);
 					}
 				});
+			},
+
+			loadMore() {
+				let products = JSON.parse(localStorage.getItem('products'));
+				if (products.length == 20) return (this.canLoad = false);
+				this.getProducts(6);
 			},
 		},
 		mounted() {
