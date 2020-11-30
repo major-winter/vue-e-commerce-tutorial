@@ -26,8 +26,6 @@
 <style scoped>
 	.card .product-image {
 		height: 400px;
-		/* width: 200px; */
-		/* zoom: 0.8;	 */
 		transform: scale(0.7);
 	}
 
@@ -37,5 +35,19 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 1; /* number of lines to show */
 		-webkit-box-orient: vertical;
+	}
+
+	@media screen and (max-width: 768px) {
+		.card .product-image {
+			height: 350px;
+			transform: scale(0.8);
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		.card .product-image {
+			height: 300px;
+			/* transform: scale(0.8); */
+		}
 	}
 </style>

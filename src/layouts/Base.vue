@@ -39,31 +39,9 @@
 		</div>
 		<div class="fill-space"></div>
 		<footer class="footer">
-			<div>
-				<div class="footer-content">
-					<h5>Get to Know Us</h5>
-					<ul>
-						<li>About Us</li>
-						<li>Careers</li>
-						<li>Investor Relations</li>
-					</ul>
-				</div>
-				<div class="footer-content">
-					<h5>Make Money with Us</h5>
-					<ul>
-						<li>Sell your products</li>
-						<li>Sell your apps</li>
-						<li>Become an Affiliate</li>
-						<li>Advertise your products</li>
-					</ul>
-				</div>
-			</div>
-
-			<div>
-				<p>
-					Copyright 2020
-				</p>
-			</div>
+			<div>Author: Jason</div>
+			<div>Phone No. 0906-802-954</div>
+			<div>Email: tuanchuhoang@gmail.com</div>
 		</footer>
 	</div>
 </template>
@@ -112,13 +90,6 @@
 		width: 50px;
 		border-radius: 100% !important;
 	}
-	.page-container {
-		padding-top: 81px;
-	}
-	/* .col ul {
-			list-style: none;
-			padding: 0;
-		} */
 
 	footer {
 		position: relative;
@@ -137,9 +108,6 @@
 		list-style: none;
 		padding: 0;
 	}
-	/* .fill-space {
-			height: calc(100vh - 587px);
-		} */
 	@media (max-width: 576px) {
 		.nav-items > img,
 		.nav-items a {

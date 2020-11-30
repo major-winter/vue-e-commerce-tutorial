@@ -9,6 +9,7 @@
 			<div class="col-12 col-sm-8 col-lg-3 text-left text-justify">
 				<p class="lead text-justify">{{ product.title }}</p>
 				<div>
+					<p>{{product.description}}</p>
 					<p class="h3">Price: ${{ product.price }}</p>
 				</div>
 				<AddToCart :product="product" v-if="user.cu" />
