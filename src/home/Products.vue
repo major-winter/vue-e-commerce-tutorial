@@ -22,7 +22,7 @@
 				/>
 			</div>
 			<div class="row" v-if="searchProducts.length === 0">
-				<div class="col-6 col-md-6 col-lg-4" v-for="product in products" :key="product.id">
+				<div class="col-6 col-md-6 col-lg-4 mobile" v-for="product in products" :key="product.id">
 					<ProductCard :product="product" />
 				</div>
 			</div>
@@ -94,4 +94,11 @@
 		},
 	};
 </script>
-<style scoped></style>
+<style scoped>
+@media screen and (max-width: 531px) {
+	.mobile {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+</style>
