@@ -1,6 +1,7 @@
 <template>
 	<div class="card mb-3 shadow-sm">
 		<img :src="product.image" class="card-img-top product-image" />
+
 		<div class="card-body">
 			<h5 class="card-title text-left text-display">{{ product.title }}</h5>
 			<div class="row justify-content-around align-items-baseline">

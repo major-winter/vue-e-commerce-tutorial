@@ -12,7 +12,7 @@
 			v-if="!isInCardProp"
 			@click.stop="addCart({ product, quantity })"
 			type="button"
-			class="btn btn-primary btn-lg btn-block col-9"
+			class="btn btn-primary btn-lg btn-block col-8"
 		>
 			ADD TO CART
 		</button>
@@ -20,7 +20,7 @@
 			v-else
 			@click.stop="removeCart(product.id)"
 			type="button"
-			class="btn btn-primary btn-lg btn-block col-9"
+			class="btn btn-primary btn-lg btn-block col-8"
 		>
 			REMOVE FROM CART
 		</button>

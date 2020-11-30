@@ -1,13 +1,12 @@
 <template>
 	<div class="container-fluid">
-		<div class="row d-flex justify-content-center" v-if="isLoaded">
-			<div class="col-2">
+		<div class="row d-flex justify-content-center mobile" v-if="isLoaded">
+			<div class="col-12 col-sm-8 col-lg-3">
 				<div class="card text-left shadow-md">
 					<img class="card-img-top product-detail" :src="product.image" alt />
 				</div>
 			</div>
-			<div class="col-4 text-left text-justify">
-				<p class="display-4">{{ product.category }}</p>
+			<div class="col-12 col-sm-8 col-lg-3 text-left text-justify">
 				<p class="lead text-justify">{{ product.title }}</p>
 				<div>
 					<p class="h3">Price: ${{ product.price }}</p>
@@ -44,6 +43,7 @@
 		},
 	};
 </script>
+
 <style scoped>
 	.container-fluid {
 		padding: 30px;
@@ -54,4 +54,11 @@
 	/* .card * {
 		max-height: 85vh;
 	} */
+	@media (max-width: 768px) {
+		.mobile {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
 </style>

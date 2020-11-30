@@ -4,7 +4,7 @@
 			<nav class="navbar navbar-expand-lg navbar-dark">
 				<router-link class="navbar-brand" to="/">Vue-Shop</router-link>
 				<div class="ml-auto">
-					<div v-if="Object.keys(this.user).length > 0">
+					<div class="nav-items" v-if="Object.keys(this.user).length > 0">
 						<img :src="user.SJ" class="img-thumbnail profile-image" alt />
 						<router-link class="btn btn-primary my-2 my-sm-0" to="/cart">
 							<img
@@ -38,9 +38,9 @@
 			<router-view />
 		</div>
 		<div class="fill-space"></div>
-		<footer>
-			<div class="row">
-				<div class="col">
+		<footer class="footer">
+			<div>
+				<div class="footer-content">
 					<h5>Get to Know Us</h5>
 					<ul>
 						<li>About Us</li>
@@ -48,7 +48,7 @@
 						<li>Investor Relations</li>
 					</ul>
 				</div>
-				<div class="col">
+				<div class="footer-content">
 					<h5>Make Money with Us</h5>
 					<ul>
 						<li>Sell your products</li>
@@ -58,7 +58,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row">
+
+			<div>
 				<p>
 					Copyright 2020
 				</p>
@@ -93,6 +94,11 @@
 </script>
 
 <style>
+	.nav-items > img,
+	.nav-items a {
+		margin-right: 30px;
+	}
+
 	nav,
 	footer {
 		background-color: teal;
@@ -109,10 +115,10 @@
 	.page-container {
 		padding-top: 81px;
 	}
-	.col ul {
-		list-style: none;
-		padding: 0;
-	}
+	/* .col ul {
+			list-style: none;
+			padding: 0;
+		} */
 
 	footer {
 		position: relative;
@@ -122,7 +128,22 @@
 		font-size: 0.8rem;
 	}
 
+	.footer > div {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.footer-content ul {
+		list-style: none;
+		padding: 0;
+	}
 	/* .fill-space {
-		height: calc(100vh - 587px);
-	} */
+			height: calc(100vh - 587px);
+		} */
+	@media (max-width: 576px) {
+		.nav-items > img,
+		.nav-items a {
+			margin-right: 10px;
+		}
+	}
 </style>

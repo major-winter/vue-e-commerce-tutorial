@@ -22,7 +22,7 @@
 				/>
 			</div>
 			<div class="row" v-if="searchProducts.length === 0">
-				<div class="col-md-4" v-for="product in products" :key="product.id">
+				<div class="col-6 col-md-6 col-lg-4" v-for="product in products" :key="product.id">
 					<ProductCard :product="product" />
 				</div>
 			</div>
