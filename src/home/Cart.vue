@@ -1,7 +1,7 @@
 <template>
 	<div class="container" style="padding: 30px">
 		<div class="row d-flex justify-content-center">
-			<div class="list-group col-8">
+			<div class="list-group col-10 col-md-8 col-lg-6">
 				<a
 					v-for="item in cart"
 					:key="item.id"
