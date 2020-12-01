@@ -1,7 +1,7 @@
 <template>
 	<div class="container" style="padding: 30px">
 		<div class="row d-flex justify-content-center">
-			<div class="list-group col-10 col-md-8 col-lg-6">
+			<div class="list-group col-12 col-md-8 col-lg-6 items-card-custom">
 				<a
 					v-for="item in cart"
 					:key="item.id"
@@ -16,12 +16,12 @@
 							<p>${{ item.price }}</p>
 						</div>
 						<div class="mr-2">
-							<p>Total Price</p>
-							<p>${{ item.price * item.quantity }}</p>
-						</div>
-						<div>
 							<p>Quantity</p>
 							<p>{{ item.quantity }}</p>
+						</div>
+						<div>
+							<p>Total Price</p>
+							<p>${{ item.price * item.quantity }}</p>
 						</div>
 					</div>
 				</a>
@@ -90,4 +90,8 @@
 		},
 	};
 </script>
-<style></style>
+<style>
+.items-card-custom {
+	padding-right: 0;
+}
+</style>
