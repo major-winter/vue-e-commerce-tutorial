@@ -1,7 +1,8 @@
-export default function() {
+export default function () {
 	return {
 		products: [],
 		product: {},
 		cart: [],
+		commerceProducts: []
 	};
 }

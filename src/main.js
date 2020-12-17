@@ -7,7 +7,7 @@ import GAuth from 'vue-google-oauth2';
 import Commerce from '@chec/commerce.js';
 
 // Create a new Commerce instance
-const commerce =
+export const commerce =
 	typeof process.env.VUE_APP_CHEC_PUBLIC_KEY !== 'undefined'
 		? new Commerce(process.env.VUE_APP_CHEC_PUBLIC_KEY)
 		: null;
@@ -39,14 +39,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-Vue.mixin({
-	beforeCreate() {
-		this.$commerce = commerce;
-	},
-});
-
-console.log(commerce, 'key')
 
 new Vue({
 	router,

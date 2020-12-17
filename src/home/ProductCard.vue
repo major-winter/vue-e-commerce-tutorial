@@ -1,11 +1,15 @@
 <template>
-  <div class="card mb-3 shadow-sm product-card">
-    <img :src="product.image" class="card-img-top product-image" />
-
+  <router-link
+    class="card mb-3 shadow-sm product-card"
+    type="button"
+		tag="div"
+    :to="{ name: 'ProductDetail', params: { idProduct: product.id } }"
+  >
+    <img :src="product.media.source" class="card-img-top product-image" />
     <div class="card-body">
-      <h5 class="card-title text-left text-display">{{ product.title }}</h5>
+      <h5 class="card-title text-left text-display">{{ product.name }}</h5>
       <div class="row justify-content-around align-items-baseline">
-        <p>Price: {{ product.price }}$</p>
+        <p>Price: {{ product.price.formatted_with_symbol }}</p>
         <router-link
           type="button"
           class="btn btn-primary btn-lg"
@@ -14,7 +18,7 @@
         >
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 <script>
 export default {
@@ -29,7 +33,7 @@ export default {
 }
 
 .product-card:hover {
-	transform: scale(1.03) translateY(-.2rem);
+  transform: scale(1.03) translateY(-0.2rem);
 }
 
 .card .product-image {

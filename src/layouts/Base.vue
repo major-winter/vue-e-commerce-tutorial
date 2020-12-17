@@ -94,7 +94,8 @@ footer {
 } */
 
 .logo:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1.5px);
+	transition: all .1s;
 }
 
 .logo:hover span {
