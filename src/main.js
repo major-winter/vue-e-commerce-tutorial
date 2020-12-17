@@ -4,9 +4,19 @@ import router from './router';
 import store from './store';
 import GAuth from 'vue-google-oauth2';
 
+import Commerce from '@chec/commerce.js';
+
+// Create a new Commerce instance
+const commerce =
+	typeof process.env.VUE_APP_CHEC_PUBLIC_KEY !== 'undefined'
+		? new Commerce(process.env.VUE_APP_CHEC_PUBLIC_KEY)
+		: null;
+
+
+const apiKey = process.env.VUE_APP_FIREBASE_API_KEY;
+
 const gauthOption = {
-	clientId:
-		'215470174198-566t7lnmm254pjkr7t86s47irotckc5s.apps.googleusercontent.com',
+	clientId: apiKey,
 	scope: 'profile email',
 	prompt: 'select_account',
 };
@@ -18,8 +28,7 @@ Vue.config.productionTip = false;
 let firebase = window.firebase;
 
 var firebaseConfig = {
-	apiKey:
-		'215470174198-566t7lnmm254pjkr7t86s47irotckc5s.apps.googleusercontent.com',
+	apiKey: apiKey,
 	authDomain: 'vue-ecommerce-be468.firebaseapp.com',
 	databaseURL: 'https://vue-ecommerce-be468.firebaseio.com',
 	projectId: 'vue-ecommerce-be468',
@@ -30,6 +39,14 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+Vue.mixin({
+	beforeCreate() {
+		this.$commerce = commerce;
+	},
+});
+
+console.log(commerce, 'key')
 
 new Vue({
 	router,

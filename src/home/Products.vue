@@ -22,7 +22,11 @@
 				/>
 			</div>
 			<div class="row" v-if="searchProducts.length === 0">
-				<div class="col-6 col-md-6 col-lg-4 mobile" v-for="product in products" :key="product.id">
+				<div
+					class="col-6 col-md-6 col-lg-4 mobile"
+					v-for="product in products"
+					:key="product.id"
+				>
 					<ProductCard :product="product" />
 				</div>
 			</div>
@@ -89,16 +93,22 @@
 				this.getProducts(6);
 			},
 		},
+		created() {
+			console.log(this.$commerce);
+			this.$commerce.products.list().then((res) => {
+				console.log(res.data);
+			});
+		},
 		mounted() {
 			this.getProducts();
 		},
 	};
 </script>
 <style scoped>
-@media screen and (max-width: 531px) {
-	.mobile {
-		flex: 0 0 100%;
-		max-width: 100%;
+	@media screen and (max-width: 531px) {
+		.mobile {
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
 	}
-}
 </style>
