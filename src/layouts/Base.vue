@@ -39,7 +39,7 @@
     <div class="page-container">
       <router-view />
     </div>
-    <div class="fill-space"></div>
+    <!-- <div class="fill-space"></div> -->
     <footer class="footer">
       <div>Author: Jason</div>
       <div>Phone No. 0906-802-954</div>
@@ -116,7 +116,7 @@ footer {
 
 footer {
   position: relative;
-  bottom: -460px;
+  bottom: -230px;
   overflow: hidden;
   padding: 10px;
   font-size: 0.8rem;

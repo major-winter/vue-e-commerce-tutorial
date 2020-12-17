@@ -2,11 +2,19 @@ import axios from 'axios';
 import { commerce } from '@/main'
 let limit = 6;
 
-export function fetchProducts ({ commit }) {
+export function fetchProducts ({ commit }, payload) {
+	if (payload) limit += payload;
 	commerce.products.list({ limit }).then((products) => {
 		commit('setCommerceProducts', products.data)
 	})
 		.catch(err => console.log(err))
+}
+
+export function getProductDetail ({ commit }, payload) {
+	commerce.products.retrieve(payload).then((product) => {
+		commit('setProduct', product)
+	}
+	);
 }
 
 export function getProducts ({ commit }, payload) {
@@ -24,18 +32,18 @@ export function getProducts ({ commit }, payload) {
 		});
 }
 
-export async function productDetails ({ commit }, id) {
-	let url = `https://fakestoreapi.com/products/${id}`;
+// export async function productDetails ({ commit }, id) {
+// 	let url = `https://fakestoreapi.com/products/${id}`;
 
-	await axios
-		.get(url)
-		.then((response) => {
-			commit('setProduct', response.data);
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-}
+// 	await axios
+// 		.get(url)
+// 		.then((response) => {
+// 			commit('setProduct', response.data);
+// 		})
+// 		.catch(function (error) {
+// 			console.log(error);
+// 		});
+// }
 
 export function addCart ({ commit, getters }, payload) {
 	let cart = getters.cart;

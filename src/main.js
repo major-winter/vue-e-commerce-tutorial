@@ -40,6 +40,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
 new Vue({
 	router,
 	store,

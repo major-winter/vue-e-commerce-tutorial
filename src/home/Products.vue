@@ -75,7 +75,7 @@
         </div>
       </div>
 
-			<!-- View for searched products -->
+      <!-- View for searched products -->
       <div class="row" v-else>
         <div
           class="col-md-4"
@@ -86,7 +86,10 @@
         </div>
       </div>
       <div>
-        <button class="btn btn-info btn-lg" v-if="canLoad">Load more</button>
+        <button class="btn btn-info btn-lg" v-if="canLoad" @click="loadMore">
+          Load more
+        </button>
+        <p v-else class="end-text">You've reached to the end of the list</p>
       </div>
     </div>
   </div>
@@ -113,10 +116,13 @@ export default {
         ? vm.findProduct()
         : vm.findProduct(newVal);
     },
+    getCommerceProducts(newVal) {
+      if (newVal.length >= 12) this.canLoad = false;
+    },
   },
   components: { ProductCard },
   methods: {
-    ...mapActions("product", ["fetchProducts", "addCart", "removeCart"]),
+    ...mapActions("product", ["fetchProducts", "removeCart"]),
 
     //   findProduct() {
     //     let vm = this;
@@ -132,11 +138,10 @@ export default {
     //     });
     //   },
 
-    //   loadMore() {
-    //     let products = JSON.parse(localStorage.getItem("products"));
-    //     if (products.length == 20) return (this.canLoad = false);
-    //     this.getProducts(6);
-    //   },
+    loadMore() {
+      // this.getProducts(6);
+      this.fetchProducts(6);
+    },
   },
   mounted() {
     // this.getProducts();
@@ -146,6 +151,9 @@ export default {
 </script>
 
 <style scoped>
+.end-text {
+  margin-top: 50px;
+}
 @media screen and (max-width: 531px) {
   .mobile {
     flex: 0 0 100%;

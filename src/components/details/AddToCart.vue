@@ -1,6 +1,6 @@
 <template>
 	<div class="row row-custom">
-		<div class="col-3">
+		<div class="col-4">
 			<label class="sr-only" for="inlineFormInputName2">Quantity</label>
 			<input
 				type="number"
@@ -12,7 +12,7 @@
 			v-if="!isInCardProp"
 			@click.stop="addCart({ product, quantity })"
 			type="button"
-			class="btn btn-primary btn-lg btn-block col-8"
+			class="btn btn-primary btn-md btn-block col-6"
 		>
 			ADD TO CART
 		</button>
@@ -20,7 +20,7 @@
 			v-else
 			@click.stop="removeCart(product.id)"
 			type="button"
-			class="btn btn-primary btn-lg btn-block col-8"
+			class="btn btn-primary btn-md btn-block col-6"
 		>
 			REMOVE FROM CART
 		</button>
